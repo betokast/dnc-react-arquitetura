@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* ===== STANDARDS ===== */
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+  background-color: var(--bg-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ===== MAIN COLORS ===== */
+:root {
+  --primary: #0c70f2;
+  --secondary: #1d1d1d;
+  --tertiary: #f6f6f6;
+  --title-color: #292f36;
+  --text-color: #4d5053;
+  --bg-color: #fff;
+}
+
+/* ===== GRID ===== */
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1140px;
+  position: relative;
+  padding: 0 30px;
+}
+
+.al-center {
+  align-items: center;
+}
+
+.al-end {
+  align-items: end;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.fd-column {
+  flex-direction: column;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.jc-end {
+  justify-content: end;
+}
+
+.jc-space-between {
+  justify-content: space-between;
+}
+
+/* ===== MEDIA ===== */
+@media(max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+
+  .mobile-fd-column {
+    flex-direction: column;
+  }
+}
