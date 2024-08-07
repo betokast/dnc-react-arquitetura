@@ -30,6 +30,10 @@ a {
   color: var(--grey-color1);
 }
 
+.tertiary-background {
+  background-color: var(--tertiary);
+}
+
 /* ===== GRID ===== */
 .container {
   margin: 0 auto;
