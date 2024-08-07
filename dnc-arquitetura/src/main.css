@@ -22,8 +22,12 @@ a {
   --secondary: #1d1d1d;
   --tertiary: #f6f6f6;
   --title-color: #292f36;
-  --text-color: #4d5053;
+  --grey-color1: #4d5053;
   --bg-color: #fff;
+}
+
+.grey-color-1 {
+  color: var(--grey-color1);
 }
 
 /* ===== GRID ===== */
@@ -61,6 +65,23 @@ a {
 
 .jc-space-between {
   justify-content: space-between;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "DM Serif Display", serif;
+  font-size: inherit;
+  padding: 0;
+  margin: 0;
+  letter-spacing: 2.5px;
+}
+
+p {
+  line-height: 150px;
+}
+
+.text-center {
+  text-align: center;
 }
 
 /* ===== MEDIA ===== */
