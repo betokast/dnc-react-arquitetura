@@ -1,4 +1,5 @@
 import Banner from "../../components/banner/Banner";
+import ContactForm from "../../components/ContactForm/ContactForm";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/Header/Header";
 
@@ -7,7 +8,9 @@ function Contact() {
     <>
       <Header />
       <Banner title="Contact" image='contact.svg' />
-      <p>Subtitle contact</p>
+      <div className="container">
+        <ContactForm />
+      </div>
       <Footer />
     </>
   )
