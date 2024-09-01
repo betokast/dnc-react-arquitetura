@@ -1,11 +1,29 @@
+import { useState, useEffect } from 'react';
 import './ProjectsList.css';
 
 //Assets
 import LikedFilled from '../../assets/like-filled.svg';
-import LikedUnfilled from '../../assets/like-unfilled.svg';
 
-// eslint-disable-next-line no-unused-vars
-function ProjectsList(props) {
+//UTILS
+import { getApiData } from '../../services/apiServices';
+
+function ProjectsList() {
+  // eslint-disable-next-line no-unused-vars
+  const [ projects, setProjects ] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const projectsResponse = await getApiData('projects');
+            setProjects(projectsResponse);
+            console.log(projectsResponse);
+        } catch(error) {
+            setProjects([]);
+        }
+    }
+    fetchData()
+  }, [])
+
   return (
     <div className='projects-section'>
       <div className="projects-hero">
@@ -13,54 +31,19 @@ function ProjectsList(props) {
         <p>It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.</p>
       </div>
       <div className='projects-grid'>
-        <div className='project-card d-flex jc-center al-center fd-column'>
-          <div className='thumb tertiary-background'></div>
-          <h3>João Silva</h3>
-          <p>BH, Brazil</p>
-          <img src={LikedFilled} height="20px" />
-        </div>
-        <div className='project-card d-flex jc-center al-center fd-column'>
-          <div className='thumb tertiary-background'></div>
-          <h3>João Silva</h3>
-          <p>BH, Brazil</p>
-          <img src={LikedUnfilled} height="20px" />
-        </div>
-        <div className='project-card d-flex jc-center al-center fd-column'>
-          <div className='thumb tertiary-background'></div>
-          <h3>João Silva</h3>
-          <p>BH, Brazil</p>
-          <img src={LikedUnfilled} height="20px" />
-        </div>
-        <div className='project-card d-flex jc-center al-center fd-column'>
-          <div className='thumb tertiary-background'></div>
-          <h3>João Silva</h3>
-          <p>BH, Brazil</p>
-          <img src={LikedUnfilled} height="20px" />
-        </div>
-        <div className='project-card d-flex jc-center al-center fd-column'>
-          <div className='thumb tertiary-background'></div>
-          <h3>João Silva</h3>
-          <p>BH, Brazil</p>
-          <img src={LikedUnfilled} height="20px" />
-        </div>
-        <div className='project-card d-flex jc-center al-center fd-column'>
-          <div className='thumb tertiary-background'></div>
-          <h3>João Silva</h3>
-          <p>BH, Brazil</p>
-          <img src={LikedUnfilled} height="20px" />
-        </div>
-        <div className='project-card d-flex jc-center al-center fd-column'>
-          <div className='thumb tertiary-background'></div>
-          <h3>João Silva</h3>
-          <p>BH, Brazil</p>
-          <img src={LikedUnfilled} height="20px" />
-        </div>
-        <div className='project-card d-flex jc-center al-center fd-column'>
-          <div className='thumb tertiary-background'></div>
-          <h3>João Silva</h3>
-          <p>BH, Brazil</p>
-          <img src={LikedUnfilled} height="20px" />
-        </div>
+        {
+            projects.map((project) => {
+                <div className='project-card d-flex jc-center al-center fd-column' key={project.id}>
+                    <div
+                        className='thumb tertiary-background'
+                        style={{ backgroundImage: `url(${project.thumb})` }}
+                    ></div>
+                    <h3>{project.title}</h3>
+                    <p>{project.subtitle}</p>
+                    <img src={LikedFilled} height="20px" />
+                </div>
+            })
+        }
       </div>
     </div>
   )
