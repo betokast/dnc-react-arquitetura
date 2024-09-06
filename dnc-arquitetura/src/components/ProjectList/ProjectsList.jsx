@@ -5,10 +5,10 @@ import './ProjectsList.css';
 import LikedFilled from '../../assets/like-filled.svg';
 
 //UTILS
+// eslint-disable-next-line no-unused-vars
 import { getApiData } from '../../services/apiServices';
 
 function ProjectsList() {
-  // eslint-disable-next-line no-unused-vars
   const [ projects, setProjects ] = useState([]);
 
   useEffect(() => {
@@ -17,12 +17,13 @@ function ProjectsList() {
             const projectsResponse = await getApiData('projects');
             setProjects(projectsResponse);
             console.log(projectsResponse);
-        } catch(error) {
+        } catch (error) {
+            console.log('Error fetching projectors', error);
             setProjects([]);
         }
-    }
-    fetchData()
-  }, [])
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className='projects-section'>
@@ -33,15 +34,17 @@ function ProjectsList() {
       <div className='projects-grid'>
         {
             projects.map((project) => {
-                <div className='project-card d-flex jc-center al-center fd-column' key={project.id}>
-                    <div
-                        className='thumb tertiary-background'
-                        style={{ backgroundImage: `url(${project.thumb})` }}
-                    ></div>
-                    <h3>{project.title}</h3>
-                    <p>{project.subtitle}</p>
-                    <img src={LikedFilled} height="20px" />
-                </div>
+                return (
+                    <div className='project-card d-flex jc-center al-center fd-column' key={project.id}>
+                        <div
+                            className='thumb tertiary-background'
+                            style={{ backgroundImage: `url(${project.thumb})` }}
+                        ></div>
+                        <h3>{project.title}</h3>
+                        <p>{project.subtitle}</p>
+                        <img src={LikedFilled} height="20px" />
+                    </div>
+                )
             })
         }
       </div>
