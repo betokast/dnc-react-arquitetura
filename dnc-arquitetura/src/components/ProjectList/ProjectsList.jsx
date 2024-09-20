@@ -5,7 +5,6 @@ import './ProjectsList.css';
 import LikedFilled from '../../assets/like-filled.svg';
 
 //UTILS
-// eslint-disable-next-line no-unused-vars
 import { getApiData } from '../../services/apiServices';
 
 function ProjectsList() {
@@ -18,7 +17,7 @@ function ProjectsList() {
             setProjects(projectsResponse);
             console.log(projectsResponse);
         } catch (error) {
-            console.log('Error fetching projectors', error);
+            console.log(`Error fetching projectors: ${error}`);
             setProjects([]);
         }
     };
@@ -33,6 +32,7 @@ function ProjectsList() {
       </div>
       <div className='projects-grid'>
         {
+          projects ?
             projects.map((project) => {
                 return (
                     <div className='project-card d-flex jc-center al-center fd-column' key={project.id}>
@@ -46,6 +46,7 @@ function ProjectsList() {
                     </div>
                 )
             })
+          : null
         }
       </div>
     </div>

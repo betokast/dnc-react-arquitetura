@@ -34,6 +34,23 @@ a {
   background-color: var(--tertiary);
 }
 
+/* ===== FORM ===== */
+.form-input {
+  border: none;
+  border-bottom: 1px solid var(--title-color);
+  color: var(--title-color);
+  font-size: 22px;
+  font-family: "Jost", sans-serif;
+  padding: 0 0 13px 0;
+  outline: none;
+  width: 100%;
+}
+
+.form-input::placeholder {
+  color: var(--title-color);
+  opacity: 0.8;
+}
+
 /* ===== GRID ===== */
 .container {
   margin: 0 auto;
